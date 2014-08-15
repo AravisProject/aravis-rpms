@@ -1,5 +1,5 @@
 Name:		aravis		
-Version:	0.3.3
+Version:	0.3.4
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
@@ -61,14 +61,14 @@ Aravis is a glib/gobject based library for video acquisition using Genicam camer
 
 This package contains the simple video viewer application.
 
-%package gstreamer-plugin
+%package gstreamer1
 
-Summary:	Aravis digital video camera acquisition library -- GStreamer plugin
+Summary:	Aravis digital video camera acquisition library -- GStreamer 1.0 plugin
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	gstreamer1-plugins-base
 
-%description gstreamer-plugin
+%description gstreamer1
 Aravis is a glib/gobject based library for video acquisition using Genicam cameras. It currently only implements an ethernet camera protocol used for industrial cameras. 
 
 This package contains the GStreamer plugin.
@@ -77,7 +77,7 @@ This package contains the GStreamer plugin.
 %setup -q
 
 %build
-%configure --enable-gtk3 --enable-viewer --enable-notify --enable-gst-plugin
+%configure --enable-viewer --enable-gst-plugin
 make %{?_smp_mflags}
 
 
@@ -88,7 +88,7 @@ desktop-file-install --vendor=""						\
        --dir=%{buildroot}%{_datadir}/applications/				\
        %{buildroot}%{_datadir}/applications/arv-viewer.desktop
 
-%files -f %{fullname}.lang
+%files
 %{_bindir}/arv-tool-0.4
 %{_bindir}/arv-fake-gv-camera-0.4
 %{_datadir}/%{fullname}/*.xml
@@ -102,7 +102,7 @@ desktop-file-install --vendor=""						\
 %{_libdir}/pkgconfig/*
 %{_datadir}/gir-1.0/*
 
-%files viewer
+%files -f %{fullname}.lang viewer
 %{_bindir}/arv-viewer
 %{_datadir}/%{fullname}/*.ui
 %{_datadir}/icons/hicolor/22x22/apps/*
@@ -110,6 +110,7 @@ desktop-file-install --vendor=""						\
 %{_datadir}/icons/hicolor/48x48/apps/*
 %{_datadir}/icons/hicolor/256x256/apps/*
 %{_datadir}/applications/arv-viewer.desktop
+%{_datadir}/appdata/arv-viewer.appdata.xml
 
 %post viewer
 touch --no-create %{_datadir}/icons/hicolor
@@ -127,7 +128,7 @@ fi
 update-mime-database %{_datadir}/mime &> /dev/null || :
 update-desktop-database &> /dev/null || :
 
-%files gstreamer-plugin
+%files gstreamer1
 %{_libdir}/gstreamer-1.0/*
 
 %changelog

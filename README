@@ -1,0 +1,9 @@
+Build the rpms:
+
+buildrpm -ba aravis.spec
+
+Mock:
+
+mock [-r target] rebuild aravis-x.y.z-a.srpm
+
+
