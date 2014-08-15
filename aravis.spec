@@ -1,6 +1,6 @@
 Name:		aravis		
 Version:	0.3.4
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
 Group:		Development/Libraries
@@ -54,7 +54,7 @@ Requires:	libnotify
 Requires:	gtk3
 Requires:	gstreamer1-plugins-base
 Requires:	gstreamer1-plugins-good
-Requires:	gstreamer1-plugins-bad
+Requires:	gstreamer1-plugins-bad-free
 
 %description viewer
 Aravis is a glib/gobject based library for video acquisition using Genicam cameras. It currently only implements an ethernet camera protocol used for industrial cameras. 
@@ -133,3 +133,5 @@ update-desktop-database &> /dev/null || :
 
 %changelog
 
+* Fri Aug 15 2014 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.4-2
+- Fix aravis-viewer dependency
