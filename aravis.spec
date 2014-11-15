@@ -1,6 +1,6 @@
 Name:		aravis		
-Version:	0.3.4
-Release:	2%{?dist}
+Version:	0.3.5
+Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
 Group:		Development/Libraries
@@ -132,6 +132,11 @@ update-desktop-database &> /dev/null || :
 %{_libdir}/gstreamer-1.0/*
 
 %changelog
+
+* Wed Aug 20 2014 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.5-1
+- Update to aravis 0.3.5
+- ArvChunkParser API for Chunk Data support
+- Make ArvBuffer internal data private
 
 * Fri Aug 15 2014 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.4-2
 - Fix aravis-viewer dependency
