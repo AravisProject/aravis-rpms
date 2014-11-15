@@ -1,5 +1,5 @@
 Name:		aravis		
-Version:	0.3.5
+Version:	0.3.6
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
@@ -77,7 +77,7 @@ This package contains the GStreamer plugin.
 %setup -q
 
 %build
-%configure --enable-viewer --enable-gst-plugin
+%configure --enable-viewer --enable-gst-plugin --disable-gst-0.10-plugin
 make %{?_smp_mflags}
 
 
@@ -132,6 +132,15 @@ update-desktop-database &> /dev/null || :
 %{_libdir}/gstreamer-1.0/*
 
 %changelog
+
+* Sat Nov 15 2014 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.6.1
+- New upstream release
+- camera: new abort_acquisition function
+- gv_stream: missing frame detection fix
+- buffer: user_data and frame_id accessors
+- chunk_parser: bug fixes
+- viewer: prevent use of broken coglsink from autovideosink
+- translations: updates (Matej, Balázs, Andika, Daniel, Rafael)
 
 * Wed Aug 20 2014 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.5-1
 - Update to aravis 0.3.5
