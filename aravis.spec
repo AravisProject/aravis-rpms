@@ -1,6 +1,6 @@
 Name:		aravis		
-Version:	0.3.6
-Release:	1%{?dist}
+Version:	0.3.7
+Release:	2%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
 Group:		Development/Libraries
@@ -133,6 +133,16 @@ update-desktop-database &> /dev/null || :
 
 %changelog
 
+* Sat Jan 17 2015 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.7.1
+- New upstream release
+- genicam: fix accuracy of division of integers
+- new arv_make_high_priority and arv_make_realtime API
+- viewer: make stream thread realtime if possible
+- camera: add GigEVision specific API for packet delay, packet size and stream selection
+- gst_pugins: add a number of buffers property
+- build fixes
+- translation updates
+
 * Sat Nov 15 2014 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.6.1
 - New upstream release
 - camera: new abort_acquisition function
@@ -140,7 +150,7 @@ update-desktop-database &> /dev/null || :
 - buffer: user_data and frame_id accessors
 - chunk_parser: bug fixes
 - viewer: prevent use of broken coglsink from autovideosink
-- translations: updates (Matej, Balázs, Andika, Daniel, Rafael)
+- translations: updates
 
 * Wed Aug 20 2014 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.5-1
 - Update to aravis 0.3.5
