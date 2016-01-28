@@ -1,6 +1,6 @@
 Name:		aravis		
-Version:	0.3.7
-Release:	2%{?dist}
+Version:	0.3.8
+Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
 Group:		Development/Libraries
