@@ -1,9 +1,0 @@
-Build the rpms:
-
-rpmbuild -ba aravis.spec
-
-Mock:
-
-mock -r fedora-23-x86_64 rebuild aravis-x.y.z-a.srpm
-
-
