@@ -24,9 +24,6 @@ BuildRequires:	pkgconfig(libusb-1.0)
 BuildRequires:	pkgconfig(libcap-ng)
 BuildRequires:	pkgconfig(audit)
 
-Source10:	aravis.png
-
-# I don't know why version 0.5.7 is actually 0.6
 %global  majorversion 0.6
 %global fullname %{name}-%{majorversion}
 
@@ -92,7 +89,7 @@ This package contains the GStreamer plugin.
 %setup -q
 
 %build
-%configure --enable-usb --enable-packet-socket --enable-viewer --enable-gst-plugin --enable-fast-heartbeat --disable-gst-0.10-plugin
+%configure --enable-usb --enable-packet-socket --enable-viewer --enable-gst-plugin --disable-gst-0.10-plugin
 make %{?_smp_mflags}
 
 
@@ -105,6 +102,10 @@ desktop-file-install --vendor=""						\
 
 # remove .la files
 find ${RPM_BUILD_ROOT} -type f -name "*.la" -exec rm -f {} ';'
+
+# bug, these should never exist in the first place
+rm %{buildroot}%{_datadir}/%{fullname}/arvviewer.h
+rm %{buildroot}%{_datadir}/%{fullname}/arvviewertypes.h
 
 %post viewer
 touch --no-create %{_datadir}/icons/hicolor
@@ -142,8 +143,6 @@ update-desktop-database &> /dev/null || :
 
 %files -f %{fullname}.lang viewer
 %{_bindir}/arv-viewer
-%{_datadir}/%{fullname}/arvviewer.h
-%{_datadir}/%{fullname}/arvviewertypes.h
 %{_datadir}/%{fullname}/*.ui
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/applications/arv-viewer.desktop
@@ -156,11 +155,7 @@ update-desktop-database &> /dev/null || :
 * Tue Feb 21 2017 Mark Harfouche <mark.harfouche@gmail.com> 0.5.7
 - New upstream release
 - Enabled usb support
-- I didn't know where to put
-%{_datadir}/%{fullname}/arvviewer.h
-%{_datadir}/%{fullname}/arvviewertypes.h
 - Enabled packet-socket
-- Enabled fast-heartbeat
 
 * Sat Jan 17 2015 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.7.1
 - New upstream release
