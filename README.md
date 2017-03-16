@@ -15,10 +15,14 @@ https://copr.fedorainfracloud.org/coprs/emmanuelp/Aravis/
 
 ### Srpm build
 
+```
 rpmbuild -ba aravis-0.4.spec
 rpmbuild -ba aravis-0.6.spec
+```
 
 ### Mock
 
+```
 mock -r fedora-24-x86_64 rebuild aravis-0.4-x.y.z-a.srpm
 mock -r fedora-24-x86_64 rebuild aravis-0.6-x.y.z-a.srpm
+```
