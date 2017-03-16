@@ -1,16 +1,13 @@
-%global majorversion 0.4
+%global majorversion 0.6
 Name:		aravis-%{majorversion}
-Version:	0.4.1
-Release:	2%{?dist}
+Version:	0.5.7
+Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
-
-Obsoletes: aravis < 0.4.1-2
-Obsoletes: aravis-debuginfo < 0.4.1-2
 
 Group:		Development/Libraries
 License:	GPLv2+
 URL:		http://live.gnome.org/Aravis
-Source0:	http://ftp.gnome.org/pub/gnome/sources/aravis/0.4/aravis-%{version}.tar.xz
+Source0:	http://ftp.gnome.org/pub/gnome/sources/aravis/0.5/aravis-%{version}.tar.xz
 
 BuildRequires:	desktop-file-utils
 BuildRequires:	intltool
@@ -24,12 +21,15 @@ BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(libnotify)
 BuildRequires:	pkgconfig(gstreamer-base-1.0) >= 1.0
 BuildRequires:	pkgconfig(gstreamer-app-1.0)
+BuildRequires:	pkgconfig(libusb-1.0)
+BuildRequires:	pkgconfig(libcap-ng)
+BuildRequires:	pkgconfig(audit)
 
 Requires:	glib2 >= 2.26
 Requires:	libxml2
 
 %description
-Aravis is a glib/gobject based library for video acquisition using Genicam cameras. It currently only implements an ethernet camera protocol used for industrial cameras.
+Aravis is a glib/gobject based library for video acquisition using Genicam cameras. It currently implements the gigabit ethernet and USB3 protocols used by industrial cameras.
 
 %package devel
 Summary:	Aravis digital video camera acquisition library -- Development files
@@ -40,10 +40,9 @@ Requires:	pkgconfig(gobject-2.0)
 Requires:	pkgconfig(gio-2.0)
 Requires:	pkgconfig(libxml-2.0)
 Requires:	pkgconfig(gthread-2.0)
-Obsoletes: aravis-devel < 0.4.1-2
 
 %description devel
-Aravis is a glib/gobject based library for video acquisition using Genicam cameras. It currently only implements an ethernet camera protocol used for industrial cameras.
+Aravis is a glib/gobject based library for video acquisition using Genicam cameras. It currently implements the gigabit ethernet and USB3 protocols used by industrial cameras.
 
 This package contains the development files for Aravis.
 
@@ -56,10 +55,9 @@ Requires:	gtk3
 Requires:	gstreamer1-plugins-base
 Requires:	gstreamer1-plugins-good
 Requires:	gstreamer1-plugins-bad-free
-Obsoletes: aravis-viewer < 0.4.1-2
 
 %description viewer
-Aravis is a glib/gobject based library for video acquisition using Genicam cameras. It currently only implements an ethernet camera protocol used for industrial cameras.
+Aravis is a glib/gobject based library for video acquisition using Genicam cameras. It currently implements the gigabit ethernet and USB3 protocols used by industrial cameras.
 
 This package contains the simple video viewer application.
 
@@ -69,7 +67,7 @@ Group:		Development/Libraries
 Requires:	%{name} = %{version}
 
 %description static
-Aravis is a glib/gobject based library for video acquisition using Genicam cameras. It currently implements an ethernet protocol used by industrial cameras.
+Aravis is a glib/gobject based library for video acquisition using Genicam cameras. It currently implements the gigabit ethernet and USB3 protocols used by industrial cameras.
 
 This package contains the static development files for Aravis.
 
@@ -79,10 +77,9 @@ Summary:	Aravis digital video camera acquisition library -- GStreamer 1.0 plugin
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
 Requires:	gstreamer1-plugins-base
-Obsoletes: aravis-gstreamer1 < 0.4.1-2
 
 %description gstreamer1
-Aravis is a glib/gobject based library for video acquisition using Genicam cameras. It currently only implements an ethernet camera protocol used for industrial cameras.
+Aravis is a glib/gobject based library for video acquisition using Genicam cameras. It currently implements the gigabit ethernet and USB3 protocols used by industrial cameras.
 
 This package contains the GStreamer plugin.
 
@@ -90,14 +87,12 @@ This package contains the GStreamer plugin.
 %setup -q -n aravis-%{version}
 
 %build
-%configure --enable-viewer --enable-gst-plugin --disable-gst-0.10-plugin
+%configure --enable-usb --enable-packet-socket --enable-viewer --enable-gst-plugin --disable-gst-0.10-plugin
 make %{?_smp_mflags}
 
 
 %install
 %make_install
-# I think this is fixed in 0.5
-mv %{buildroot}/usr/doc %{buildroot}%{_docdir}
 %find_lang %{name}
 desktop-file-install --vendor=""						\
        --dir=%{buildroot}%{_datadir}/applications/				\
@@ -105,6 +100,10 @@ desktop-file-install --vendor=""						\
 
 # remove .la files
 find ${RPM_BUILD_ROOT} -type f -name "*.la" -exec rm -f {} ';'
+
+# bug, these should never exist in the first place
+rm %{buildroot}%{_datadir}/%{name}/arvviewer.h
+rm %{buildroot}%{_datadir}/%{name}/arvviewertypes.h
 
 %post viewer
 touch --no-create %{_datadir}/icons/hicolor
@@ -128,7 +127,7 @@ update-desktop-database &> /dev/null || :
 %{_datadir}/%{name}/*.xml
 %{_libdir}/lib%{name}*.so.*
 %{_libdir}/girepository-1.0/*
-%{_docdir}/%{name}
+%{_docdir}/aravis/%{name}
 
 %files devel
 %{_datadir}/gtk-doc/html/%{name}
@@ -151,7 +150,13 @@ update-desktop-database &> /dev/null || :
 %{_libdir}/gstreamer-1.0/*
 
 %changelog
-* Wed Feb 22 2017 Mark Harfouche <mark.harfouche@gmail.com> - 0.4.1-2
+* Tue Feb 22 2017 Mark Harfouche <mark.harfouche@gmail.com> 0.5.7
+- New upstream release
+- Changing the name to aravis-0.6
+- Enabled usb support
+- Enabled packet-socket
+
+* Wed Feb 22 2017 Mark Harfouche <mark.harfouche@gmail.com> 0.4.1-2
 - Changing the name to aravis-0.4
 
 * Sat Jan 17 2015 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.7.1
