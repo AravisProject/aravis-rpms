@@ -5,7 +5,7 @@ Release:	2%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
 Obsoletes: aravis < 0.4.1-2
-
+Obsoletes: aravis-debuginfo < 0.4.1-2
 
 Group:		Development/Libraries
 License:	GPLv2+
@@ -69,7 +69,7 @@ Group:		Development/Libraries
 Requires:	%{name} = %{version}
 
 %description static
-Aravis is a glib/gobject based library for video acquisition using Genicam cameras. It currently implements the gigabit ethernet and USB3 (Since Aravis 0.5.x) protocols used by industrial cameras. 
+Aravis is a glib/gobject based library for video acquisition using Genicam cameras. It currently implements an ethernet protocol used by industrial cameras.
 
 This package contains the static development files for Aravis.
 
@@ -153,7 +153,6 @@ update-desktop-database &> /dev/null || :
 %changelog
 * Wed Feb 22 2017 Mark Harfouche <mark.harfouche@gmail.com> - 0.4.1-2
 - Changing the name to aravis-0.4
-
 
 * Sat Jan 17 2015 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.7.1
 - New upstream release
