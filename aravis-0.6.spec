@@ -1,6 +1,6 @@
 %global majorversion 0.6
 Name:		aravis-%{majorversion}
-Version:	0.5.7
+Version:	0.5.10
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
@@ -55,6 +55,7 @@ Requires:	gtk3
 Requires:	gstreamer1-plugins-base
 Requires:	gstreamer1-plugins-good
 Requires:	gstreamer1-plugins-bad-free
+Obsoletes:	aravis-0.4-viewer
 
 %description viewer
 Aravis is a glib/gobject based library for video acquisition using Genicam cameras. It currently implements the gigabit ethernet and USB3 protocols used by industrial cameras.
@@ -101,10 +102,6 @@ desktop-file-install --vendor=""						\
 # remove .la files
 find ${RPM_BUILD_ROOT} -type f -name "*.la" -exec rm -f {} ';'
 
-# bug, these should never exist in the first place
-rm %{buildroot}%{_datadir}/%{name}/arvviewer.h
-rm %{buildroot}%{_datadir}/%{name}/arvviewertypes.h
-
 %post viewer
 touch --no-create %{_datadir}/icons/hicolor
 if [ -x %{_bindir}/gtk-update-icon-cache ]; then
@@ -123,6 +120,7 @@ update-desktop-database &> /dev/null || :
 
 %files
 %{_bindir}/arv-tool-%{majorversion}
+%{_bindir}/arv-test-%{majorversion}
 %{_bindir}/arv-fake-gv-camera-%{majorversion}
 %{_datadir}/%{name}/*.xml
 %{_libdir}/lib%{name}*.so.*
@@ -143,6 +141,7 @@ update-desktop-database &> /dev/null || :
 %{_bindir}/arv-viewer
 %{_datadir}/%{name}/*.ui
 %{_datadir}/icons/hicolor/*/apps/*
+%{_datadir}/icons/hicolor/*/devices/*				   
 %{_datadir}/applications/arv-viewer.desktop
 %{_datadir}/appdata/arv-viewer.appdata.xml
 
@@ -150,7 +149,13 @@ update-desktop-database &> /dev/null || :
 %{_libdir}/gstreamer-1.0/*
 
 %changelog
-* Tue Feb 22 2017 Mark Harfouche <mark.harfouche@gmail.com> 0.5.7
+* Fri Nov 10 2017 Emmanuel Pacaud <emmanuel@gnome.org> 0.5.10-1
+- New upstream release
+
+* Thu Mar 16 2017 Emmanuel Pacaud <emmanuel@gnome.org> 0.5.7-2
+- Make viewer package obsolete 0.4 version
+
+* Wed Feb 22 2017 Mark Harfouche <mark.harfouche@gmail.com> 0.5.7-1
 - New upstream release
 - Changing the name to aravis-0.6
 - Enabled usb support
@@ -159,7 +164,7 @@ update-desktop-database &> /dev/null || :
 * Wed Feb 22 2017 Mark Harfouche <mark.harfouche@gmail.com> 0.4.1-2
 - Changing the name to aravis-0.4
 
-* Sat Jan 17 2015 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.7.1
+* Sat Jan 17 2015 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.7-1
 - New upstream release
 - genicam: fix accuracy of division of integers
 - new arv_make_high_priority and arv_make_realtime API
@@ -169,7 +174,7 @@ update-desktop-database &> /dev/null || :
 - build fixes
 - translation updates
 
-* Sat Nov 15 2014 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.6.1
+* Sat Nov 15 2014 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.6-1
 - New upstream release
 - camera: new abort_acquisition function
 - gv_stream: missing frame detection fix
