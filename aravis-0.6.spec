@@ -1,6 +1,6 @@
 %global majorversion 0.6
 Name:		aravis-%{majorversion}
-Version:	0.5.10
+Version:	0.5.11
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
