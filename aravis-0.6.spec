@@ -1,6 +1,6 @@
 %global majorversion 0.6
 Name:		aravis-%{majorversion}
-Version:	0.5.11
+Version:	0.5.12
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
@@ -126,6 +126,7 @@ update-desktop-database &> /dev/null || :
 %{_libdir}/lib%{name}*.so.*
 %{_libdir}/girepository-1.0/*
 %{_docdir}/aravis/%{name}
+%{_mandir}/man1/arv-tool-0.6.1.gz
 
 %files devel
 %{_datadir}/gtk-doc/html/%{name}
@@ -141,9 +142,10 @@ update-desktop-database &> /dev/null || :
 %{_bindir}/arv-viewer
 %{_datadir}/%{name}/*.ui
 %{_datadir}/icons/hicolor/*/apps/*
-%{_datadir}/icons/hicolor/*/devices/*				   
+%{_datadir}/icons/hicolor/*/devices/*
 %{_datadir}/applications/arv-viewer.desktop
 %{_datadir}/appdata/arv-viewer.appdata.xml
+%{_mandir}/man1/arv-viewer.1.gz
 
 %files gstreamer1
 %{_libdir}/gstreamer-1.0/*
