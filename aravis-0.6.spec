@@ -1,6 +1,6 @@
 %global majorversion 0.6
 Name:		aravis-%{majorversion}
-Version:	0.5.12
+Version:	0.6.1
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
@@ -22,7 +22,6 @@ BuildRequires:	pkgconfig(libnotify)
 BuildRequires:	pkgconfig(gstreamer-base-1.0) >= 1.0
 BuildRequires:	pkgconfig(gstreamer-app-1.0)
 BuildRequires:	pkgconfig(libusb-1.0)
-BuildRequires:	pkgconfig(libcap-ng)
 BuildRequires:	pkgconfig(audit)
 
 Requires:	glib2 >= 2.26
@@ -151,6 +150,19 @@ update-desktop-database &> /dev/null || :
 %{_libdir}/gstreamer-1.0/*
 
 %changelog
+* Tue Feb 05 2019 Emmanuel Pacaud <emmanuel@gnome.org> 0.6.1-1
+- gigevision: auto-packet size negociation improvements
+- gigevision: interface addess assignment improvement
+- usb3vision: memory leak fixes
+- usb3vision: payload size computation fixes
+- camera: avoid clashes in device id generation
+- genicam: signedness and endianness related fix
+- usb3vision: chunk data support
+- camera: matrix vision device support
+- camera: PointGrey / FLIR renaming support
+- i18n: czech and slovak translations
+- build: remove libcap-ng dependency
+
 * Fri Nov 10 2017 Emmanuel Pacaud <emmanuel@gnome.org> 0.5.10-1
 - New upstream release
 
