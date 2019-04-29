@@ -1,6 +1,6 @@
 %global majorversion 0.6
 Name:		aravis-%{majorversion}
-Version:	0.6.1
+Version:	0.6.2
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
@@ -119,7 +119,6 @@ update-desktop-database &> /dev/null || :
 
 %files
 %{_bindir}/arv-tool-%{majorversion}
-%{_bindir}/arv-test-%{majorversion}
 %{_bindir}/arv-fake-gv-camera-%{majorversion}
 %{_datadir}/%{name}/*.xml
 %{_libdir}/lib%{name}*.so.*
