@@ -6,8 +6,8 @@ Summary:	Aravis digital video camera acquisition library
 
 Group:		Development/Libraries
 License:	GPLv2+
-URL:		http://live.gnome.org/Aravis
-Source0:	http://ftp.gnome.org/pub/gnome/sources/aravis/0.6/aravis-%{version}.tar.xz
+URL:		https://github.com/AravisProject/aravis
+Source0:	https://ftp.gnome.org/pub/gnome/sources/aravis/0.6/aravis-%{version}.tar.xz
 
 BuildRequires:	desktop-file-utils
 BuildRequires:	intltool
