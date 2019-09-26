@@ -1,5 +1,5 @@
 %global majorversion 0.8
-Name:		aravis
+Name:		aravis-%{majorversion}
 Version:	0.7.0
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
@@ -9,8 +9,12 @@ License:	GPLv2+
 URL:		https://github.com/AravisProject/aravis
 Source0:	https://ftp.gnome.org/pub/gnome/sources/aravis/0.7/aravis-%{version}.tar.xz
 
+BuildRequires:	meson
+BuildRequires:	gcc
+BuildRequires:	gcc-c++
 BuildRequires:	desktop-file-utils
 BuildRequires:	intltool
+BuildRequires:	gtk-doc
 BuildRequires:	gobject-introspection-devel
 BuildRequires:	pkgconfig(glib-2.0) >= 2.26
 BuildRequires:	pkgconfig(gobject-2.0)
@@ -74,7 +78,7 @@ Aravis is a glib/gobject based library for video acquisition using Genicam camer
 This package contains the GStreamer plugin.
 
 %prep
-%autosetup
+%setup -q -n aravis-%{version}
 
 %build
 %meson
@@ -83,7 +87,7 @@ This package contains the GStreamer plugin.
 %install
 %meson_install
 
-%find_lang %{name}-%{majorversion}
+%find_lang %{name}
 
 desktop-file-install --vendor=""						\
        --dir=%{buildroot}%{_datadir}/applications/				\
@@ -108,19 +112,19 @@ update-desktop-database &> /dev/null || :
 %files
 %{_bindir}/arv-tool-*
 %{_bindir}/arv-fake-gv-camera-*
-%{_datadir}/%{name}-*/*.xml
+%{_datadir}/%{name}/*.xml
 %{_libdir}/lib%{name}*.so.*
 %{_libdir}/girepository-1.0/*
 %{_mandir}/man1/arv-tool-0.8.1.gz
 
 %files devel
-%{_datadir}/gtk-doc/html/%{name}-*
-%{_includedir}/%{name}-*
+%{_datadir}/gtk-doc/html/%{name}
+%{_includedir}/%{name}
 %{_libdir}/pkgconfig/*
 %{_datadir}/gir-1.0/*
-%{_libdir}/lib%{name}-*.so
+%{_libdir}/lib%{name}.so
 
-%files -f %{name}-0.8.lang viewer
+%files -f %{name}.lang viewer
 %{_bindir}/arv-viewer-*
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/applications/arv-viewer-*.desktop
