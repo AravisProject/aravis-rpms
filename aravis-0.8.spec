@@ -58,7 +58,7 @@ Requires:	gtk3
 Requires:	gstreamer1-plugins-base
 Requires:	gstreamer1-plugins-good
 Requires:	gstreamer1-plugins-bad-free
-Obsoletes:	aravis-0.4-viewer
+Obsoletes:	aravis-0.4-viewer <= 0.5
 
 %description viewer
 Aravis is a glib/gobject based library for video acquisition using Genicam cameras. It currently implements the gigabit ethernet and USB3 protocols used by industrial cameras.
@@ -128,7 +128,7 @@ update-desktop-database &> /dev/null || :
 %{_bindir}/arv-viewer-*
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/applications/arv-viewer-*.desktop
-%{_datadir}/appdata/arv-viewer-*.appdata.xml
+%{_datadir}/metainfo/arv-viewer-*.appdata.xml
 %{_mandir}/man1/arv-viewer-*.1.gz
 
 %files gstreamer1
