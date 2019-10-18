@@ -1,6 +1,6 @@
 %global majorversion 0.8
 Name:		aravis-%{majorversion}
-Version:	0.7.1
+Version:	0.7.2
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
@@ -135,75 +135,97 @@ update-desktop-database &> /dev/null || :
 %{_libdir}/gstreamer-1.0/*
 
 %changelog
+* Fri Oct 18 2019 Emmanuel Pacaud <emmanuel@gnome.org> 0.7.2-1
+New upstream release
+
+  * gigevision: support for ImageExtendedChunkPayload (Nathan)
+  * chunkparser: add a GError parameter to the getters (Emmanuel)
+  * chunkparser: add a boolean accessor (Emmanuel)
+  * arvtool: new `values` command that show the values of all available features (Emmanuel)
+  * gcport: don't try to read a register when the port is an event (Emmanuel)
+  * genicam: pSelect support (Emmanuel)
+  * genicam: remove value_type property, replaced by ARV_IS_GC_(FLOAT|INTEGER`BOOLEAN|STRING|ENUMERATION) (Emmanuel)
+  * genicam: simplify read/write feature values as/from string (Emmanuel)
+  * genicam: fix min/max of non 64 bit integers
+  * genicam: Float and Integer now get their min/max also from pValue (Emmanuel)
+  * gigevision: correctly detect access denied errors
+
 * Mon Sep 09 2019 Emmanuel Pacaud <emmanuel@gnome.org> 0.7.0-1
-- New upstream release
+New upstream release
 
 * Tue May 28 2019 Emmanuel Pacaud <emmanuel@gnome.org> 0.6.3-1
-- New upstream release
-- device: fix get_status return value
-- gigevision: add more pixel format enums
+New upstream release
+
+  * device: fix get_status return value
+  * gigevision: add more pixel format enums
 
 * Thu Apr 25 2019 Emmanuel Pacaud <emmanuel@gnome.org> 0.6.2-1
-- New upstream release
-- stream: add stop/start thread API
-- gigevision: allow to discover more devices
-- gigevision: stop stream thread quicker
-- genicam: add <Register> element support
-- genicam: let float node point to integer node
-- usb3vision: sanity checks during device initialization
+New upstream release
+
+  * stream: add stop/start thread API
+  * gigevision: allow to discover more devices
+  * gigevision: stop stream thread quicker
+  * genicam: add <Register> element support
+  * genicam: let float node point to integer node
+  * usb3vision: sanity checks during device initialization
 
 * Tue Feb 05 2019 Emmanuel Pacaud <emmanuel@gnome.org> 0.6.1-1
-- New upstream release
-- gigevision: auto-packet size negociation improvements
-- gigevision: interface addess assignment improvement
-- usb3vision: memory leak fixes
-- usb3vision: payload size computation fixes
-- camera: avoid clashes in device id generation
-- genicam: signedness and endianness related fix
-- usb3vision: chunk data support
-- camera: matrix vision device support
-- camera: PointGrey / FLIR renaming support
-- i18n: czech and slovak translations
-- build: remove libcap-ng dependency
+New upstream release
+
+  * gigevision: auto-packet size negociation improvements
+  * gigevision: interface addess assignment improvement
+  * usb3vision: memory leak fixes
+  * usb3vision: payload size computation fixes
+  * camera: avoid clashes in device id generation
+  * genicam: signedness and endianness related fix
+  * usb3vision: chunk data support
+  * camera: matrix vision device support
+  * camera: PointGrey / FLIR renaming support
+  * i18n: czech and slovak translations
+  * build: remove libcap-ng dependency
 
 * Fri Nov 10 2017 Emmanuel Pacaud <emmanuel@gnome.org> 0.5.10-1
-- New upstream release
+New upstream release
 
 * Thu Mar 16 2017 Emmanuel Pacaud <emmanuel@gnome.org> 0.5.7-2
-- Make viewer package obsolete 0.4 version
+Make viewer package obsolete 0.4 version
 
 * Wed Feb 22 2017 Mark Harfouche <mark.harfouche@gmail.com> 0.5.7-1
-- New upstream release
-- Changing the name to aravis-0.6
-- Enabled usb support
-- Enabled packet-socket
+New upstream release
+
+  * Changing the name to aravis-0.6
+  * Enabled usb support
+  * Enabled packet-socket
 
 * Wed Feb 22 2017 Mark Harfouche <mark.harfouche@gmail.com> 0.4.1-2
-- Changing the name to aravis-0.4
+Changing the name to aravis-0.4
 
 * Sat Jan 17 2015 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.7-1
-- New upstream release
-- genicam: fix accuracy of division of integers
-- new arv_make_high_priority and arv_make_realtime API
-- viewer: make stream thread realtime if possible
-- camera: add GigEVision specific API for packet delay, packet size and stream selection
-- gst_pugins: add a number of buffers property
-- build fixes
-- translation updates
+New upstream release
+
+  * genicam: fix accuracy of division of integers
+  * new arv_make_high_priority and arv_make_realtime API
+  * viewer: make stream thread realtime if possible
+  * camera: add GigEVision specific API for packet delay, packet size and stream selection
+  * gst_pugins: add a number of buffers property
+  * build fixes
+  * translation updates
 
 * Sat Nov 15 2014 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.6-1
-- New upstream release
-- camera: new abort_acquisition function
-- gv_stream: missing frame detection fix
-- buffer: user_data and frame_id accessors
-- chunk_parser: bug fixes
-- viewer: prevent use of broken coglsink from autovideosink
-- translations: updates
+New upstream release
+
+  * camera: new abort_acquisition function
+  * gv_stream: missing frame detection fix
+  * buffer: user_data and frame_id accessors
+  * chunk_parser: bug fixes
+  * viewer: prevent use of broken coglsink from autovideosink
+  * translations: updates
 
 * Wed Aug 20 2014 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.5-1
-- Update to aravis 0.3.5
-- ArvChunkParser API for Chunk Data support
-- Make ArvBuffer internal data private
+Update to aravis 0.3.5
+
+  * ArvChunkParser API for Chunk Data support
+  * Make ArvBuffer internal data private
 
 * Fri Aug 15 2014 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.4-2
-- Fix aravis-viewer dependency
+Fix aravis-viewer dependency
