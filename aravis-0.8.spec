@@ -1,6 +1,6 @@
 %global majorversion 0.8
 Name:		aravis-%{majorversion}
-Version:	0.7.2
+Version:	0.7.4
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
@@ -135,6 +135,19 @@ update-desktop-database &> /dev/null || :
 %{_libdir}/gstreamer-1.0/*
 
 %changelog
+* Mon Apr 20 2020 Emmanuel Pacaud <emmanuel@gnome.org> 0.7.4-1
+New upstream release
+
+  * camera/device/stream: add an error parameter to object intantiation functions (Emmanuel)
+  * camera: fix node type mismatch error in set_frame_rate (Arkadiusz)
+  * gigevision: ignore duplicated packets (Joris)
+  * build: make build of tests optional (Edgar)
+  * all: use gobject macros for class declarations (Emmanuel)
+  * camera: add a GError parameter to most functions (Emmanuel)
+  * python: add python tests in test suite (Emmanuel)
+  * usb3vision: improve reliability of camera connection (Dmitry)
+  * introspection: fix PixefFormat type (Léo, Maarten)
+
 * Fri Oct 18 2019 Emmanuel Pacaud <emmanuel@gnome.org> 0.7.2-1
 New upstream release
 
