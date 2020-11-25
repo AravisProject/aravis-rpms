@@ -18,6 +18,7 @@ https://copr.fedorainfracloud.org/coprs/emmanuelp/Aravis/
 ```
 rpmbuild -ba aravis-0.4.spec
 rpmbuild -ba aravis-0.6.spec
+rpmbuild -ba aravis-0.8.spec
 ```
 
 ### Mock
