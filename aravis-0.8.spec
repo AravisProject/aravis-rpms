@@ -1,6 +1,6 @@
 %global majorversion 0.8
 Name:		aravis-%{majorversion}
-Version:	0.8.4
+Version:	0.8.7
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
@@ -134,7 +134,89 @@ update-desktop-database &> /dev/null || :
 %{_libdir}/gstreamer-1.0/*
 
 %changelog
-* Mon Apr 20 2020 Emmanuel Pacaud <emmanuel@gnome.org> 0.7.4-1
+* Sun Mar 28 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.7-1
+New upstream release
+
+  * camera: ignore Acquisitiontart feature setting failure (Emmanuel)
+  * camera: fix trigger setting for Basler cameras (Casperoo)
+  * camera: add set_exposure API (Emmanuel)
+  * gigevision: Windows support (Václav)
+  * usb3vision: better error packet handling (Emmanuel)
+  * genicam: allow get/set float from an int node (Emmanuel)
+  * genicam: allow multiple pIndex property nodes (Emmanuel)
+
+* Sun Mar 28 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.6-1
+New upstream release
+
+  * camera: handle GainRaw also as a float feature
+  * camera: add arv_camera_new_with_device()
+  * camera: ignore error on TriggerSelector and TriggerMode setting in arv_camera_set_trigger()
+  * gigevision: fail quicker if a device is not found at ArvGvDevice instantiation
+  * fakegvcamera: fix interface selection
+  * genicam: implement optional range check for integer and float node values, as a runtime option
+  * genicam: fix min/max computation for StructEntry and MaskedIntReg nodes
+  * gstplugin: don't fail camera init if gain or exposure features are not available
+
+* Sun Mar 28 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.5-1
+New upstream release
+
+  * macOS: build fix
+  * travis:enable macOS
+
+* Sun Mar 28 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.4-1
+New upstream release
+
+  * all: s/adjustement/adjustment/
+
+* Sun Mar 28 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.3-1
+New upstream release
+
+  * gigevision: automatically adjust packet size if needed (Emmanuel)
+  * gstreamer: don't try to set frame rate if feature is not available (Emmanuel)
+  * genicam: fix pVariable name with dot (Arrigo)
+  * genicam: fix parsing of genicam data url (Emmanuel)
+  * buffer: add arv_buffer_set_frame_id API (Russel)
+  * usb3vision: add Dahua Technology USB id (H.F)
+  * build: preparatory work for windows compilation (Eudoxos)
+
+* Sun Mar 28 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.2-1
+New upstream release
+
+  * gvdevice: fix timeout race (casperoo)
+  * fakecamera: implement Mono16 pixel format (Hinko)
+  * Enable ppc64le in CI pipeline (nagesh)
+
+* Sun Mar 28 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.1-1
+New upstream release
+
+  * build: add more compilation warnings and fix them (Emmanuel)
+
+* Sun Mar 28 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.0-1
+New upstream release
+
+  * gigevision: ExtendedIds support (Hendrick, Emmanuel)
+  * gigevision: add get_control_access API (casperoo)
+  * genicam: implement proper AccessMode and ImposedAccessMode support (Siim)
+  * genicam: add or extend support for Representation, Unit, DisplayNotation and DisplayPrecision proerties (Siim)
+  * genicam: extend GcRregisterDescriptionNode API (Siim)
+  * genicam: improve String register (Siim)
+  * genicam: implement arv_gc_feature_get_name_space() (Siim)
+  * gst-plugin: don't shadow GstBaseSrc num-buffers property (Marko)
+  * usb3vision: add Daheng Imaging descriptors (Jakob)
+
+* Sun Mar 28 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.7.5-1
+New upstream release
+
+  * gst-plugin: error handling and lock fixes (Marko)
+  * build: fix when aravis is used as a subproject (Rihards)
+  * build: fix viewer build without libusb (Guillaume)
+  * fake camera: implement bayer pixel formats (Bernardo)
+  * gcregister: don't try to read WO registers (Stefan)
+  * viewer: fix buffer leak (Emmanuel)
+  * gvstream: correctly handle resend request limit (Emmanuel)
+  * stream: device reference leak fix (Emmanuel)
+
+* Mon Apr 20 2020 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.7.4-1
 New upstream release
 
   * camera/device/stream: add an error parameter to object intantiation functions (Emmanuel)
@@ -147,7 +229,7 @@ New upstream release
   * usb3vision: improve reliability of camera connection (Dmitry)
   * introspection: fix PixefFormat type (Léo, Maarten)
 
-* Fri Oct 18 2019 Emmanuel Pacaud <emmanuel@gnome.org> 0.7.2-1
+* Fri Oct 18 2019 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.7.2-1
 New upstream release
 
   * gigevision: support for ImageExtendedChunkPayload (Nathan)
@@ -162,16 +244,16 @@ New upstream release
   * genicam: Float and Integer now get their min/max also from pValue (Emmanuel)
   * gigevision: correctly detect access denied errors
 
-* Mon Sep 09 2019 Emmanuel Pacaud <emmanuel@gnome.org> 0.7.0-1
+* Mon Sep 09 2019 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.7.0-1
 New upstream release
 
-* Tue May 28 2019 Emmanuel Pacaud <emmanuel@gnome.org> 0.6.3-1
+* Tue May 28 2019 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.6.3-1
 New upstream release
 
   * device: fix get_status return value
   * gigevision: add more pixel format enums
 
-* Thu Apr 25 2019 Emmanuel Pacaud <emmanuel@gnome.org> 0.6.2-1
+* Thu Apr 25 2019 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.6.2-1
 New upstream release
 
   * stream: add stop/start thread API
@@ -181,7 +263,7 @@ New upstream release
   * genicam: let float node point to integer node
   * usb3vision: sanity checks during device initialization
 
-* Tue Feb 05 2019 Emmanuel Pacaud <emmanuel@gnome.org> 0.6.1-1
+* Tue Feb 05 2019 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.6.1-1
 New upstream release
 
   * gigevision: auto-packet size negociation improvements
@@ -196,10 +278,10 @@ New upstream release
   * i18n: czech and slovak translations
   * build: remove libcap-ng dependency
 
-* Fri Nov 10 2017 Emmanuel Pacaud <emmanuel@gnome.org> 0.5.10-1
+* Fri Nov 10 2017 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.5.10-1
 New upstream release
 
-* Thu Mar 16 2017 Emmanuel Pacaud <emmanuel@gnome.org> 0.5.7-2
+* Thu Mar 16 2017 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.5.7-2
 Make viewer package obsolete 0.4 version
 
 * Wed Feb 22 2017 Mark Harfouche <mark.harfouche@gmail.com> 0.5.7-1
@@ -212,7 +294,7 @@ New upstream release
 * Wed Feb 22 2017 Mark Harfouche <mark.harfouche@gmail.com> 0.4.1-2
 Changing the name to aravis-0.4
 
-* Sat Jan 17 2015 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.7-1
+* Sat Jan 17 2015 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.3.7-1
 New upstream release
 
   * genicam: fix accuracy of division of integers
@@ -223,7 +305,7 @@ New upstream release
   * build fixes
   * translation updates
 
-* Sat Nov 15 2014 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.6-1
+* Sat Nov 15 2014 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.3.6-1
 New upstream release
 
   * camera: new abort_acquisition function
@@ -233,11 +315,11 @@ New upstream release
   * viewer: prevent use of broken coglsink from autovideosink
   * translations: updates
 
-* Wed Aug 20 2014 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.5-1
+* Wed Aug 20 2014 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.3.5-1
 Update to aravis 0.3.5
 
   * ArvChunkParser API for Chunk Data support
   * Make ArvBuffer internal data private
 
-* Fri Aug 15 2014 Emmanuel Pacaud <emmanuel@gnome.org> 0.3.4-2
+* Fri Aug 15 2014 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.3.4-2
 Fix aravis-viewer dependency
