@@ -1,6 +1,6 @@
 %global majorversion 0.8
 Name:		aravis-%{majorversion}
-Version:	0.8.7
+Version:	0.8.8
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
@@ -111,6 +111,7 @@ update-desktop-database &> /dev/null || :
 
 %files
 %{_bindir}/arv-tool-*
+%{_bindir}/arv-camera-test-*
 %{_bindir}/arv-fake-gv-camera-*
 %{_libdir}/lib%{name}*.so.*
 %{_libdir}/girepository-1.0/*
@@ -134,6 +135,16 @@ update-desktop-database &> /dev/null || :
 %{_libdir}/gstreamer-1.0/*
 
 %changelog
+* Wed Apr 21 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.8-1
+New upstream release
+
+  * arv-camera-test: promote to installed application (Emmanuel)
+  * applications: fix policy parameter consistency (Emmanuel)
+  * debug: timestamped and modernized output (Emmanuel)
+  * genicam: add a range check debug mode (Emmanuel)
+  * gvdevice: faster finalization (Emmanuel)
+  * camera: new DeviceSerialNumber getter (Emmanuel)
+
 * Sun Mar 28 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.7-1
 New upstream release
 
