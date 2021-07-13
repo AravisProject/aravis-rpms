@@ -1,13 +1,13 @@
 %global majorversion 0.8
 Name:		aravis-%{majorversion}
-Version:	0.8.12
+Version:	0.8.13
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
 Group:		Development/Libraries
 License:	GPLv2+
 URL:		https://github.com/AravisProject/aravis
-Source0:	https://github.com/AravisProject/aravis/releases/download/ARAVIS_0_8_12/aravis-0.8.12.tar.xz
+Source0:	https://github.com/AravisProject/aravis/releases/download/ARAVIS_0_8_13/aravis-0.8.13.tar.xz
 
 BuildRequires:	meson
 BuildRequires:	gcc
@@ -135,6 +135,39 @@ update-desktop-database &> /dev/null || :
 %{_libdir}/gstreamer-1.0/*
 
 %changelog
+* Tue Jul 13 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.13-1
+New upstream release
+
+  * viewer: fix incorrect bandwith and frame rate computation
+
+* Tue Jul 13 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.12-1
+New upstream release
+
+  * usb3vision: initialize stream infos
+
+* Tue Jul 13 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.11-1
+New upstream release
+
+  * stream: add an extensible info API (Emmanuel)
+  * gvstream: improve packet resend request behaviour in case of unordered gvsp
+    packets (Emmanuel)
+  * gvstream: wait for thread setup during ArvGvStream initialization (Emmanuel)
+  * gigevision: use MAC as serial number fallback (Emmanuel)
+  * genicam: fix arv_exposure_mode_to_string (Martin)
+  * usb3vision: improve error reporting in case of libsub error (Emmanuel)
+  * usb3vision: automatically detach kernel driver (Emmanuel)
+  * cameratest: add a test duration parameter (Emmanuel)
+  * misc: rename internal ArvStatistic to ArvHistogram (Emmanuel)
+
+* Wed May 12 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.10-1
+New upstream release
+
+  * arv-tool: make device enumeration faster (Emmanuel)
+  * debug: rework debug log levels (Emmanuel)
+  * fakegvcamera: improve streaming reliability - partly fix #499 (Emmanuel)
+  * gvstream: fix use after reference release - fix #504 (Emmanuel)
+  * genicam: String node support - fix #507 (Emmanuel)
+
 * Thu Apr 22 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.9-1
 New upstream release
 
