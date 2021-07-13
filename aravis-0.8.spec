@@ -1,13 +1,13 @@
 %global majorversion 0.8
 Name:		aravis-%{majorversion}
-Version:	0.8.13
+Version:	0.8.14
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
 Group:		Development/Libraries
 License:	GPLv2+
 URL:		https://github.com/AravisProject/aravis
-Source0:	https://github.com/AravisProject/aravis/releases/download/ARAVIS_0_8_13/aravis-0.8.13.tar.xz
+Source0:	https://github.com/AravisProject/aravis/releases/download/%{version}/aravis-%{version}.tar.xz
 
 BuildRequires:	meson
 BuildRequires:	gcc
@@ -135,6 +135,11 @@ update-desktop-database &> /dev/null || :
 %{_libdir}/gstreamer-1.0/*
 
 %changelog
+* Tue Jul 13 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.14-1
+New upstream release
+
+ * debug: fix debug timestamp on older platforms (Emmanuel)
+
 * Tue Jul 13 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.13-1
 New upstream release
 
