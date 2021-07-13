@@ -1,13 +1,13 @@
 %global majorversion 0.8
 Name:		aravis-%{majorversion}
-Version:	0.8.11
+Version:	0.8.12
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
 Group:		Development/Libraries
 License:	GPLv2+
 URL:		https://github.com/AravisProject/aravis
-Source0:	https://github.com/AravisProject/aravis/releases/download/ARAVIS_0_8_11/aravis-0.8.11.tar.xz
+Source0:	https://github.com/AravisProject/aravis/releases/download/ARAVIS_0_8_12/aravis-0.8.12.tar.xz
 
 BuildRequires:	meson
 BuildRequires:	gcc
