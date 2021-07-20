@@ -1,6 +1,6 @@
 %global majorversion 0.8
 Name:		aravis-%{majorversion}
-Version:	0.8.14
+Version:	0.8.15
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
@@ -135,6 +135,14 @@ update-desktop-database &> /dev/null || :
 %{_libdir}/gstreamer-1.0/*
 
 %changelog
+* Tue Jul 20 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.15-1
+New upstream release
+
+  * gigevision: only disable packet resend after a packet unavailable error
+  * gigevision: add a new packet timeout for first packet resend request
+  * doc: improve GvStream property documentation
+  * code cleanup
+
 * Tue Jul 13 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.14-1
 New upstream release
 
