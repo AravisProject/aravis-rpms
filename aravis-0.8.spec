@@ -1,6 +1,6 @@
 %global majorversion 0.8
 Name:		aravis-%{majorversion}
-Version:	0.8.15
+Version:	0.8.16
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
@@ -113,6 +113,7 @@ update-desktop-database &> /dev/null || :
 %{_bindir}/arv-tool-*
 %{_bindir}/arv-camera-test-*
 %{_bindir}/arv-fake-gv-camera-*
+%{_bindir}/arv-test-*
 %{_libdir}/lib%{name}*.so.*
 %{_libdir}/girepository-1.0/*
 %{_mandir}/man1/arv-tool-0.8.1.gz
@@ -135,6 +136,23 @@ update-desktop-database &> /dev/null || :
 %{_libdir}/gstreamer-1.0/*
 
 %changelog
+* Fri Jul 30 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.16-1
+New upstream release
+
+  * ci: use Github actions for linux and macOS (Emmanuel)
+  * ci: minGW support (Václav)
+  * gigevision: use proper broadcast addressese during discovery (Václav)
+  * camera: accessor to float feature increment (Emmanuel)
+  * camera: make set_trigger more robust (Emmanuel)
+  * camera: fallback to Continuous mode if SingleFrame is not available
+    (Emmanuel)
+  * viewer: allow to save a snapshot as png or jpeg image (Emmanuel)
+  * viewer: display all pixel formats in selector (Emmanuel)
+  * simulator: now works on Windows and macOS (Václav, Emmanuel)
+  * debug: fix output on Windows (Václav)
+  * doc: Windows build documentation (Václav)
+  * tests: new arv-test application for automated testing (Emmanuel)
+
 * Tue Jul 20 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.15-1
 New upstream release
 
