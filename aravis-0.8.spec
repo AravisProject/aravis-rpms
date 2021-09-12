@@ -1,6 +1,6 @@
 %global majorversion 0.8
 Name:		aravis-%{majorversion}
-Version:	0.8.16
+Version:	0.8.17
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
@@ -22,7 +22,6 @@ BuildRequires:	pkgconfig(gio-2.0)
 BuildRequires:	pkgconfig(libxml-2.0)
 BuildRequires:	pkgconfig(gthread-2.0)
 BuildRequires:	pkgconfig(gtk+-3.0)
-BuildRequires:	pkgconfig(libnotify)
 BuildRequires:	pkgconfig(gstreamer-base-1.0) >= 1.0
 BuildRequires:	pkgconfig(gstreamer-app-1.0)
 BuildRequires:	pkgconfig(libusb-1.0)
@@ -53,7 +52,6 @@ This package contains the development files for Aravis.
 Summary:	Aravis digital video camera acquisition library -- Viewer
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
-Requires:	libnotify
 Requires:	gtk3
 Requires:	gstreamer1-plugins-base
 Requires:	gstreamer1-plugins-good
@@ -136,12 +134,23 @@ update-desktop-database &> /dev/null || :
 %{_libdir}/gstreamer-1.0/*
 
 %changelog
+* Sat Sep 11 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.17-1
+New upstream release
+
+  * windows: Microsoft Visual C++ support (Siim)
+  * usb3vision: async mode (Takuro, Constantine)
+  * usb3vision: use GUID for device disambiguation (Takuro)
+  * test: extend test coverage in arv-test (Emmanuel)
+  * viewer: in-app notification for save error (Emmanuel)
+  * camera: make set_trigger more robust (Emmanuel)
+  * tool: add glob pattern based device and feature selection (Emmanuel)
+
 * Fri Jul 30 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.16-1
 New upstream release
 
   * ci: use Github actions for linux and macOS (Emmanuel)
   * ci: minGW support (Václav)
-  * gigevision: use proper broadcast addressese during discovery (Václav)
+  * gigevision: use proper broadcast addresses during discovery (Václav)
   * camera: accessor to float feature increment (Emmanuel)
   * camera: make set_trigger more robust (Emmanuel)
   * camera: fallback to Continuous mode if SingleFrame is not available
