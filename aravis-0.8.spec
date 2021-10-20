@@ -1,6 +1,6 @@
 %global majorversion 0.8
 Name:		aravis-%{majorversion}
-Version:	0.8.17
+Version:	0.8.19
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
@@ -134,6 +134,21 @@ update-desktop-database &> /dev/null || :
 %{_libdir}/gstreamer-1.0/*
 
 %changelog
+* Wed Oct 20 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.19-1
+New upstream release
+
+  * camera: black level support (Brian)
+  * camera: GainAbs support for gain setting (Brian)
+  * camera: FrameBurstStart support for trigger configuration (Emmanuel)
+  * viewer: minor layout fixes (Emmanuel)
+  * ci: MSVC improvements (Siim)
+
+* Fri Sep 24 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.18-1
+New upstream release
+
+  * usb3vision: fix header inclusion when USB is disabled (Marc)
+  * tests: register cache test (Emmanuel)
+
 * Sat Sep 11 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.17-1
 New upstream release
 
