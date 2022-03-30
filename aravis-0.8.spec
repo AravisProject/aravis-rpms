@@ -1,6 +1,6 @@
 %global majorversion 0.8
 Name:		aravis-%{majorversion}
-Version:	0.8.19
+Version:	0.8.20
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
@@ -9,14 +9,14 @@ License:	GPLv2+
 URL:		https://github.com/AravisProject/aravis
 Source0:	https://github.com/AravisProject/aravis/releases/download/%{version}/aravis-%{version}.tar.xz
 
-BuildRequires:	meson
+BuildRequires:	meson >= 0.56
 BuildRequires:	gcc
 BuildRequires:	gcc-c++
 BuildRequires:	desktop-file-utils
 BuildRequires:	intltool
 BuildRequires:	gtk-doc
 BuildRequires:	gobject-introspection-devel
-BuildRequires:	pkgconfig(glib-2.0) >= 2.26
+BuildRequires:	pkgconfig(glib-2.0) >= 2.52
 BuildRequires:	pkgconfig(gobject-2.0)
 BuildRequires:	pkgconfig(gio-2.0)
 BuildRequires:	pkgconfig(libxml-2.0)
@@ -27,7 +27,7 @@ BuildRequires:	pkgconfig(gstreamer-app-1.0)
 BuildRequires:	pkgconfig(libusb-1.0)
 BuildRequires:	pkgconfig(audit)
 
-Requires:	glib2 >= 2.26
+Requires:	glib2 >= 2.52
 Requires:	libxml2
 
 %description
@@ -37,7 +37,7 @@ Aravis is a glib/gobject based library for video acquisition using Genicam camer
 Summary:	Aravis digital video camera acquisition library -- Development files
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
-Requires:	pkgconfig(glib-2.0) >= 2.26
+Requires:	pkgconfig(glib-2.0) >= 2.52
 Requires:	pkgconfig(gobject-2.0)
 Requires:	pkgconfig(gio-2.0)
 Requires:	pkgconfig(libxml-2.0)
@@ -134,6 +134,19 @@ update-desktop-database &> /dev/null || :
 %{_libdir}/gstreamer-1.0/*
 
 %changelog
+* Wed Mar 30 2022 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.20-1
+New upstream release
+
+  * camera: make set_frame_rate more robust for Basler cameras (Thies)
+  * misc: add runtime version API (Emmanuel)
+  * misc: ignore leading spaces in genicam data url (Emmanuel)
+  * misc: add get_device_manufacturer_info API (Emmanuel)
+  * qa: fix incorrect memory access (Jose)
+  * gstreamer: allow to select asynchronous USB mode (Christian)
+  * windows: fix thread priority helpers (Garfeng)
+  * meson: fix compilation using meson 0.60 (Emmanuel)
+  * doc: ubuntu 20.04 build do cimprovements (Brian)
+
 * Wed Oct 20 2021 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.19-1
 New upstream release
 
