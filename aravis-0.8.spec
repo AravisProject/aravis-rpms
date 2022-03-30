@@ -1,6 +1,6 @@
 %global majorversion 0.8
 Name:		aravis-%{majorversion}
-Version:	0.8.20
+Version:	0.8.21
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
@@ -9,12 +9,11 @@ License:	GPLv2+
 URL:		https://github.com/AravisProject/aravis
 Source0:	https://github.com/AravisProject/aravis/releases/download/%{version}/aravis-%{version}.tar.xz
 
-BuildRequires:	meson >= 0.56
+BuildRequires:	meson
 BuildRequires:	gcc
 BuildRequires:	gcc-c++
 BuildRequires:	desktop-file-utils
 BuildRequires:	intltool
-BuildRequires:	gtk-doc
 BuildRequires:	gobject-introspection-devel
 BuildRequires:	pkgconfig(glib-2.0) >= 2.52
 BuildRequires:	pkgconfig(gobject-2.0)
@@ -25,7 +24,7 @@ BuildRequires:	pkgconfig(gtk+-3.0)
 BuildRequires:	pkgconfig(gstreamer-base-1.0) >= 1.0
 BuildRequires:	pkgconfig(gstreamer-app-1.0)
 BuildRequires:	pkgconfig(libusb-1.0)
-BuildRequires:	pkgconfig(audit)
+BuildRequires:	gi-docgen >= 2021.1
 
 Requires:	glib2 >= 2.52
 Requires:	libxml2
@@ -77,6 +76,7 @@ This package contains the GStreamer plugin.
 
 %prep
 %setup -q -n aravis-%{version}
+pip3 install meson==0.56 gi-docgen
 
 %build
 %meson
@@ -117,7 +117,7 @@ update-desktop-database &> /dev/null || :
 %{_mandir}/man1/arv-tool-0.8.1.gz
 
 %files devel
-%{_datadir}/gtk-doc/html/%{name}
+%{_datadir}/doc/%{name}
 %{_includedir}/%{name}
 %{_libdir}/pkgconfig/*
 %{_datadir}/gir-1.0/*
@@ -134,6 +134,19 @@ update-desktop-database &> /dev/null || :
 %{_libdir}/gstreamer-1.0/*
 
 %changelog
+* Wed Mar 30 2022 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.21-1
+New upstream release
+
+  * build: FreeBSD support #620 (Rim)
+  * gigevision: performance improvement of standard socket method #617 (Emilio)
+  * usb3vision: prevent USB command mix up #622 (Edgar)
+  * usb3vision: fix PacketResend size field in extended ID mode #642 (Alexander)
+  * genicam: allow more Category child nodes #632 (Emmanuel)
+  * genicam: AccessMode fixes #634 (Emmanuel)
+  * genicam: fix pIsLocked when target is a Boolean node #638 (Emmanuel)
+  * doc: port to gi-docgen #621 (Emmanuel)
+  * git: default branch is main now (Emmanuel)
+
 * Wed Mar 30 2022 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.20-1
 New upstream release
 
