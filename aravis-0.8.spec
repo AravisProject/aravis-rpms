@@ -76,7 +76,6 @@ This package contains the GStreamer plugin.
 
 %prep
 %setup -q -n aravis-%{version}
-pip3 install meson==0.56 gi-docgen
 
 %build
 %meson
