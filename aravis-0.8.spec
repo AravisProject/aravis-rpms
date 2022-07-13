@@ -1,6 +1,6 @@
 %global majorversion 0.8
 Name:		aravis-%{majorversion}
-Version:	0.8.21
+Version:	0.8.22
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
@@ -78,7 +78,7 @@ This package contains the GStreamer plugin.
 %setup -q -n aravis-%{version}
 
 %build
-%meson
+%meson -Ddocumentation=enabled
 %meson_build
 
 %install
@@ -133,6 +133,26 @@ update-desktop-database &> /dev/null || :
 %{_libdir}/gstreamer-1.0/*
 
 %changelog
+* Wed Jul 13 2022 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.22-1
+New upstream release
+
+  * camera: new network command for IP settings (Romain, Masahiro)
+  * camera: don't fail if TriggerSelector is not available (Romain)
+  * camera: make region setting work even without Offset features (Emmanuel)
+  * camera: allow frame rate setting during acquisition on more devices #683 (Emmanuel)
+  * gstplugin: allow low frame rate with external triggers (Edgar)
+  * genicam: list for forced legacy mode (Romain)
+  * genicam: access mode check policy (Emmanuel)
+  * genicam: fix inifinite loop during availability check #678 (Emmanuel)
+  * u3v: use libusb device-left event for control lost detection (Emmanuel)
+  * genicam: fix information loss #656 (Emmanuel)
+  * fake_camera: add TriggerSoftware support (Romain)
+  * build: appdata fix (Chiara)
+  * build: disable documentation by default (Emmanuel)
+  * tests: fix ChunkFloat test on big endian platform #670 (Emmanuel)
+  * introspection: fix user_data_destroy_func annotations (Thomas)
+  * misc: memory leak and warning fixes (Emmanuel)
+
 * Wed Mar 30 2022 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.21-1
 New upstream release
 
