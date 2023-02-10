@@ -1,6 +1,6 @@
 %global majorversion 0.8
 Name:		aravis-%{majorversion}
-Version:	0.8.22
+Version:	0.8.25
 Release:	1%{?dist}
 Summary:	Aravis digital video camera acquisition library
 
@@ -114,6 +114,8 @@ update-desktop-database &> /dev/null || :
 %{_libdir}/lib%{name}*.so.*
 %{_libdir}/girepository-1.0/*
 %{_mandir}/man1/arv-tool-0.8.1.gz
+%{_mandir}/man1/arv-test-*.1.gz
+%{_mandir}/man1/arv-camera-test-*.1.gz
 
 %files devel
 %{_datadir}/doc/%{name}
@@ -133,6 +135,30 @@ update-desktop-database &> /dev/null || :
 %{_libdir}/gstreamer-1.0/*
 
 %changelog
+* Fri Feb 10 2023 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.25-1
+New upstream release
+
+  * viewer: add component selection support (Emmanuel)
+  * buffer: add component id getter (Emmanuel)
+  * buffer: fix multipart informations (Emmanuel)
+  * gv: fix multipart data accessor (Emmanuel)
+  * gv: improve error handling of network API (Emmanuel)
+  * python: fix crash in stream callback #714 (Cyril)
+  * gv: multipart support (Emmanuel)
+  * gv: chunk data payload support (Emmanuel)
+  * gv: use the trailer packet for expected data size calculation (Emmanuel)
+  * gv: reset SCPx register on stream finalization
+  * gv: API to allow discovery ack broadcast (Emmanuel)
+  * gv: add more legacy endianness entries (Tomohisa, Radim, Emmanuel)
+  * gv: fix infinite loop in auto packet size (Emmanuel)
+  * gv: don't use source port in socket packet mode (Emmanuel)
+  * genicam: AccessMode improvements (Emmanuel)
+  * camera: add a Component API (Emmanuel)
+  * buffer: part access API (Emmanuel)
+  * cameratest: allow to set features from a string (Emmanuel)
+  * ci: windows build fixes (Momoko, Emmanuel)
+  * doc: improvements (Masahiro, Emmanuel)
+
 * Wed Jul 13 2022 Emmanuel Pacaud <emmanuel.pacaud@free.fr> 0.8.22-1
 New upstream release
 
